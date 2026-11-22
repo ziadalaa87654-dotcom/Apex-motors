@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APEX MOTORS Inventory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="inventory.css" />
+    <link rel="stylesheet" href="shared-nav.css" />
+    <script src="transitions.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="index.html" class="nav-logo">APEX<span>.</span>MOTORS</a>
+        <ul class="nav-links">
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-tag">Full Collection</div>
+        <h1>Curated <em>Vehicles</em><br />for Every Vision</h1>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-num" id="total-stat">56</div>
+                <div class="stat-label">Vehicles Available</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">24</div>
+                <div class="stat-label">Makes Represented</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">6</div>
+                <div class="stat-label">Certified Pre-Owned</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="filter-section">
+        <div class="filter-bar">
+            <span class="filter-label">Filter By</span>
+            <div class="filter-group" id="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="sedan">Sedan</button>
+                <button class="filter-btn" data-filter="suv">SUV</button>
+                <button class="filter-btn" data-filter="coupe">Coupe</button>
+                <button class="filter-btn" data-filter="truck">Truck</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="luxury">Luxury</button>
+                <button class="filter-btn" data-filter="electric">Electric</button>
+                <button class="filter-btn" data-filter="new">New</button>
+            </div>
+            <div class="search-wrap">
+                <input type="text" id="search-input" placeholder="Search make, model¦" />
+                <span class="search-icon">•</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <div class="inventory-controls">
+        <div class="results-count">
+            <strong id="visible-count">57</strong> vehicles shown
+        </div>
+        <div class="sort-wrap">
+            <span class="sort-label">Sort by</span>
+            <select id="sort-select">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="year-desc">Year: Newest</option>
+          <option value="year-asc">Year: Oldest</option>
+          <option value="mileage-asc">Mileage: Low to High</option>
+        </select>
+        </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="inventory-grid" id="inventory-grid"></div>
+
+    <!-- IMAGE VIEWER MODAL -->
+    <div id="image-viewer-modal" class="image-modal-overlay">
+        <button class="image-modal-close">&times;</button>
+        <div class="image-modal-container">
+            <img id="modal-full-image" src="" alt="Car Image" />
+            <div class="image-modal-info">
+                <h3 id="image-modal-title"></h3>
+                <button class="image-modal-prev">&larr;</button>
+                <span id="image-modal-counter"></span>
+                <button class="image-modal-next">&rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p style="margin-bottom: 20px">
+                <strong>APEX MOTORS</strong> | A Legacy of Excellence Since 1987 | New Cairo-Industrial Area-Egypt
+            </p>
+
+            © 2024 APEX MOTORS. Precision. Prestige. Performance.
+            </p>
+        </div>
+    </footer>
+
+    <!-- INQUIRY MODAL -->
+    <div id="inquiry-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inquire About This Vehicle</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="car-info">
+                    <img id="modal-car-img" src="" alt="Car" />
+                    <div class="car-details">
+                        <h3 id="modal-car-title"></h3>
+                        <p id="modal-car-price"></p>
+                        <p id="modal-car-specs"></p>
+                    </div>
+                </div>
+                <form id="inquiry-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your interest in this vehicle..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-btn">
+                Cancel
+              </button>
+                        <button type="submit" class="btn-primary">Send Inquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Static car data — used as fallback when the API is offline -->
+    <script src="cars.js"></script>
+    <!-- Auth utilities (must load before inventory.js) -->
+    <script src="auth-utils.js"></script>
+    <script src="inventory.js"></script>
+</body>
+
+</html>

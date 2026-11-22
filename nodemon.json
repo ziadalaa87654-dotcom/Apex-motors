@@ -1,0 +1,6 @@
+{
+  "watch": ["server.js", "routes/", "middleware/", "db.js", "mailer.js", ".env"],
+  "ext": "js,json",
+  "ignore": ["node_modules/", "admin/", "*.html", "*.css", "inventory.js", "auth-utils.js", "account.js", "cars.js", "login.js"],
+  "delay": "1500"
+}

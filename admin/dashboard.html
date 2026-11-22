@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — APEX MOTORS Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-page-title">Dashboard</div>
+      <div class="admin-topbar-right">
+        <span id="topbar-time" style="font-size:0.65rem;color:var(--text-muted)"></span>
+      </div>
+    </div>
+    <div class="admin-content">
+      <!-- Stats -->
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card stat-card--gold"><div class="stat-value" id="s-cars">—</div><div class="stat-label">Total Vehicles</div></div>
+        <div class="stat-card stat-card--red"><div class="stat-value" id="s-stock">—</div><div class="stat-label">Out of Stock</div></div>
+        <div class="stat-card stat-card--green"><div class="stat-value" id="s-inq">—</div><div class="stat-label">New Inquiries</div></div>
+        <div class="stat-card stat-card--blue"><div class="stat-value" id="s-today">—</div><div class="stat-label">Inquiries Today</div></div>
+        <div class="stat-card stat-card--gold"><div class="stat-value" id="s-msg">—</div><div class="stat-label">Unread Messages</div></div>
+        <div class="stat-card stat-card--blue"><div class="stat-value" id="s-users">—</div><div class="stat-label">Registered Users</div></div>
+      </div>
+
+      <!-- Recent Inquiries -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-title">Recent Inquiries</div>
+          <a href="inquiries.html" class="btn-admin btn-admin--ghost btn-admin--sm">View All</a>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Customer</th><th>Vehicle</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="recent-inquiries"><tr><td colspan="4" class="empty-state">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Recent Messages -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div class="admin-card-title">Recent Contact Messages</div>
+          <a href="contacts.html" class="btn-admin btn-admin--ghost btn-admin--sm">View All</a>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="recent-contacts"><tr><td colspan="5" class="empty-state">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="admin.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

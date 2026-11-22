@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory — APEX MOTORS Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-page-title">Inventory</div>
+      <div class="admin-topbar-right">
+        <span id="cars-count" style="font-size:0.65rem;color:var(--text-muted)"></span>
+        <button class="btn-admin btn-admin--gold" id="add-car-btn">+ Add Vehicle</button>
+      </div>
+    </div>
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="admin-filters">
+          <button class="admin-filter-btn active" data-filter="">All</button>
+          <button class="admin-filter-btn" data-filter="available">Available</button>
+          <button class="admin-filter-btn" data-filter="sold">Sold</button>
+          <button class="admin-filter-btn" data-filter="reserved">Reserved</button>
+          <button class="admin-filter-btn" data-filter="hidden">Hidden</button>
+          <input type="text" class="admin-search" id="cars-search" placeholder="Search make, model…"/>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Image</th><th>Vehicle</th><th>Year</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="cars-tbody"><tr><td colspan="7" class="empty-state">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add / Edit Modal -->
+<div class="admin-modal-overlay" id="car-modal">
+  <div class="admin-modal" style="max-width:640px">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title" id="car-modal-title">Add Vehicle</div>
+      <button class="admin-modal-close" id="car-modal-close">&times;</button>
+    </div>
+    <div class="admin-modal-body">
+      <form id="car-form">
+        <input type="hidden" id="cf-id"/>
+        <div class="af-row">
+          <div class="af-group"><label>Year *</label><input type="number" id="cf-year" placeholder="2024" required/></div>
+          <div class="af-group"><label>Make *</label><input type="text" id="cf-make" placeholder="Porsche" required/></div>
+        </div>
+        <div class="af-row">
+          <div class="af-group"><label>Model *</label><input type="text" id="cf-model" placeholder="911 GT3 RS" required/></div>
+          <div class="af-group"><label>Price ($) *</label><input type="number" id="cf-price" placeholder="250000" required/></div>
+        </div>
+        <div class="af-row">
+          <div class="af-group"><label>Mileage (mi)</label><input type="number" id="cf-mileage" placeholder="0"/></div>
+          <div class="af-group"><label>Horsepower</label><input type="text" id="cf-hp" placeholder="518 hp"/></div>
+        </div>
+        <div class="af-row">
+          <div class="af-group"><label>Engine</label><input type="text" id="cf-engine" placeholder="4.0L Flat-6"/></div>
+          <div class="af-group"><label>Stock</label><input type="number" id="cf-stock" placeholder="1" value="1"/></div>
+        </div>
+        <div class="af-row">
+          <div class="af-group"><label>Status</label>
+            <select id="cf-status">
+              <option value="available">Available</option>
+              <option value="reserved">Reserved</option>
+              <option value="sold">Sold</option>
+              <option value="hidden">Hidden</option>
+            </select>
+          </div>
+          <div class="af-group"><label>Badge</label>
+            <select id="cf-badge">
+              <option value="">None</option>
+              <option value="new">New Arrival</option>
+              <option value="certified">CPO</option>
+              <option value="sale">Price Drop</option>
+            </select>
+          </div>
+        </div>
+        <div class="af-group"><label>Categories (comma-separated)</label><input type="text" id="cf-category" placeholder="suv, luxury, new"/></div>
+        <div class="af-group"><label>Image URL</label><input type="url" id="cf-img" placeholder="https://…"/></div>
+        <div class="af-group" style="display:flex;align-items:center;gap:10px">
+          <input type="checkbox" id="cf-featured" style="width:auto"/>
+          <label for="cf-featured" style="text-transform:none;letter-spacing:0;color:var(--text);font-size:0.78rem">Featured vehicle</label>
+        </div>
+        <div id="car-form-error" style="color:var(--error);font-size:0.72rem;margin-top:8px"></div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <button type="button" class="btn-admin btn-admin--ghost" id="car-form-cancel">Cancel</button>
+          <button type="submit" class="btn-admin btn-admin--gold" id="car-form-submit">Save Vehicle</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+<script src="cars.js"></script>
+</body>
+</html>

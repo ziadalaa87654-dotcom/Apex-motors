@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inquiries — APEX MOTORS Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-page-title">Inquiries</div>
+      <div class="admin-topbar-right">
+        <span id="inq-count" style="font-size:0.65rem;color:var(--text-muted)"></span>
+      </div>
+    </div>
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="admin-filters">
+          <button class="admin-filter-btn active" data-filter="">All</button>
+          <button class="admin-filter-btn" data-filter="new">New</button>
+          <button class="admin-filter-btn" data-filter="contacted">Contacted</button>
+          <button class="admin-filter-btn" data-filter="closed">Closed</button>
+          <input type="text" class="admin-search" id="inq-search" placeholder="Search customer or vehicle…"/>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Customer</th><th>Vehicle</th><th>Price</th>
+                <th>Phone</th><th>Date</th><th>Status</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inq-tbody"><tr><td colspan="8" class="empty-state">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="admin-modal-overlay" id="inq-modal">
+  <div class="admin-modal" style="max-width:620px">
+    <div class="admin-modal-header">
+      <div class="admin-modal-title">Inquiry Detail</div>
+      <button class="admin-modal-close" id="inq-modal-close">&times;</button>
+    </div>
+    <div class="admin-modal-body" id="inq-modal-body"></div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+<script src="inquiries.js"></script>
+</body>
+</html>

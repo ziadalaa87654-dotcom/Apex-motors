@@ -1,0 +1,269 @@
+/* ================================================================
+   APEX MOTORS — Shared Nav + Page Transition Styles
+   Include this file on every page AFTER style.css / page CSS
+   ================================================================ */
+
+/* ─── Page transition overlay ─── */
+#page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: #080808;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#page-transition-overlay.fade-out {
+  opacity: 0;
+}
+
+#page-transition-overlay.fade-in {
+  opacity: 1;
+}
+
+/* ─── Unified nav ─── */
+nav#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 60px;
+  background: linear-gradient(to bottom, rgba(8, 8, 8, 0.96), transparent);
+  backdrop-filter: blur(0px);
+  transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s,
+    border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+
+nav#nav.scrolled {
+  background: rgba(8, 8, 8, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 16px 60px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.nav-logo {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.3em;
+  color: #f0ebe0;
+  text-decoration: none;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-logo span {
+  color: #c9a84c;
+}
+
+.nav-logo:hover {
+  color: #c9a84c;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #8a8070;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.25s;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* underline grow on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c9a84c;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f0ebe0;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* active page indicator */
+.nav-links a.nav-active {
+  color: #c9a84c;
+}
+
+.nav-links a.nav-active::after {
+  width: 100%;
+}
+
+.nav-cta {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: #c9a84c;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid #c9a84c;
+  padding: 10px 24px;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.nav-cta:hover {
+  background: #c9a84c;
+  color: #080808;
+}
+
+/* ─── Scroll reveal (shared) ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ─── Responsive nav ─── */
+@media (max-width: 900px) {
+  nav#nav {
+    padding: 18px 24px;
+  }
+
+  nav#nav.scrolled {
+    padding: 14px 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-cta {
+    font-size: 11px;
+    padding: 8px 16px;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* ─── Auth Nav Slot ─── */
+
+.nav-login-link {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  text-decoration: none;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  padding: 6px 18px;
+  transition: all 0.25s;
+}
+.nav-login-link:hover {
+  background: rgba(201, 168, 76, 0.12);
+}
+
+.nav-user-menu { position: relative; }
+
+.nav-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  color: #c9a84c;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.nav-user-btn:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(201, 168, 76, 0.07);
+}
+
+.nav-user-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 220px;
+  background: #111113;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  z-index: 600;
+  animation: dropIn 0.2s ease-out;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nav-user-dropdown.open { display: block; }
+
+.nav-user-info {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nui-name  { font-size: 0.9rem; font-weight: 600; color: #f0ebe0; margin-bottom: 3px; }
+.nui-email { font-size: 0.7rem; color: #6a6560; }
+.nui-link  {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  text-decoration: none;
+}
+
+.nav-logout-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 13px 18px;
+  text-align: left;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #6a6560;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-logout-btn:hover {
+  background: rgba(220, 80, 80, 0.1);
+  color: #e07070;
+}

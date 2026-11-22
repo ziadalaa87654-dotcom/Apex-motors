@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1778857699668,
+    "carId": 1,
+    "vehicle": "2024 Mercedes-Benz S 580 4MATIC",
+    "price": 129900,
+    "name": "Ahmed Mohamed",
+    "email": "ahmed@example.com",
+    "phone": "01012345678",
+    "message": "أريد الاستفسار عن تقسيط هذه السيارة",
+    "submittedAt": "2026-05-15T15:08:19.668Z",
+    "status": "new"
+  },
+  {
+    "id": 1778862891146,
+    "carId": 1,
+    "vehicle": "2024 Mercedes-Benz S 580 4MATIC",
+    "price": 129900,
+    "name": "Ahmed Mohamed",
+    "email": "ahmed@example.com",
+    "phone": "01012345678",
+    "message": "أريد الاستفسار عن تقسيط هذه السيارة",
+    "submittedAt": "2026-05-15T16:34:51.146Z",
+    "status": "new"
+  },
+  {
+    "id": 1778891635277,
+    "carId": 1,
+    "vehicle": "2024 Mercedes-Benz S 580 4MATIC",
+    "price": 129900,
+    "name": "bcncvbnvbn",
+    "email": "bnvnvhn@gmail.com",
+    "phone": "03453434354",
+    "message": "gfhfghfhgghffh",
+    "submittedAt": "2026-05-16T00:33:55.277Z",
+    "status": "new"
+  },
+  {
+    "id": 1778891733483,
+    "carId": 2,
+    "vehicle": "2023 Porsche Cayenne Turbo GT",
+    "price": 189500,
+    "name": "bfnfnf",
+    "email": "gfghfhfg@gmail.com",
+    "phone": "0101651616",
+    "message": "ghfghfhnfghb",
+    "submittedAt": "2026-05-16T00:35:33.483Z",
+    "status": "new"
+  },
+  {
+    "id": 1778891811155,
+    "carId": 3,
+    "vehicle": "2024 BMW M5 Competition",
+    "price": 118000,
+    "name": "mohab essam",
+    "email": "mohab1372006@gmail.com",
+    "phone": "+201013322879",
+    "message": "i want this car",
+    "submittedAt": "2026-05-16T00:36:51.155Z",
+    "status": "new"
+  },
+  {
+    "id": 1778902641940,
+    "carId": 10,
+    "vehicle": "2023 Rolls-Royce Ghost Extended",
+    "price": 415000,
+    "name": "vbcvbcv",
+    "email": "vbcvbbcvb@gmail.com",
+    "phone": "432453456344",
+    "message": "bnmbmh",
+    "submittedAt": "2026-05-16T03:37:21.940Z",
+    "status": "new"
+  }
+]

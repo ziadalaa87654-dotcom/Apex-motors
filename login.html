@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — APEX MOTORS</title>
+  <meta name="description" content="Sign in or create your APEX MOTORS account to manage your vehicle inquiries." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <a href="/" class="logo">APEX<span class="logo-dot">.</span>MOTORS</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/inventory.html">Inventory</a>
+      <a href="/contact.html">Contact</a>
+      <span id="nav-auth-slot"></span>
+    </nav>
+  </header>
+
+  <!-- ── BACKGROUND ── -->
+  <div class="login-bg">
+    <div class="login-bg-orb login-bg-orb--1"></div>
+    <div class="login-bg-orb login-bg-orb--2"></div>
+  </div>
+
+  <!-- ── MAIN ── -->
+  <main class="login-main">
+    <div class="login-card">
+
+      <!-- Brand mark -->
+      <div class="login-brand">
+        <div class="login-brand-logo">A</div>
+        <div>
+          <div class="login-brand-name">APEX MOTORS</div>
+          <div class="login-brand-sub">Member Portal</div>
+        </div>
+      </div>
+
+      <!-- Tab switcher -->
+      <div class="login-tabs" role="tablist">
+        <button class="login-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login">Sign In</button>
+        <button class="login-tab"        id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register">Register</button>
+      </div>
+
+      <!-- ── LOGIN PANEL ── -->
+      <div class="login-panel active" id="panel-login" role="tabpanel">
+        <form id="login-form" novalidate autocomplete="on">
+          <div class="lf-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" name="email" placeholder="your@email.com" autocomplete="email" required />
+          </div>
+          <div class="lf-group">
+            <label for="login-password">Password</label>
+            <div class="lf-password-wrap">
+              <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+              <button type="button" class="lf-eye" id="login-eye" aria-label="Toggle password visibility">&#128065;</button>
+            </div>
+          </div>
+          <div class="lf-error" id="login-error" role="alert"></div>
+          <button type="submit" class="lf-submit" id="login-submit">
+            <span class="lf-submit-text">Sign In</span>
+            <span class="lf-spinner" hidden></span>
+          </button>
+        </form>
+        <p class="lf-switch">New to APEX MOTORS? <button class="lf-switch-btn" id="go-register">Create an account</button></p>
+      </div>
+
+      <!-- ── REGISTER PANEL ── -->
+      <div class="login-panel" id="panel-register" role="tabpanel">
+        <form id="register-form" novalidate autocomplete="on">
+          <div class="lf-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" name="name" placeholder="Ahmed Hassan" autocomplete="name" required />
+          </div>
+          <div class="lf-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" name="email" placeholder="your@email.com" autocomplete="email" required />
+          </div>
+          <div class="lf-group">
+            <label for="reg-password">Password <span class="lf-hint">(min. 8 characters)</span></label>
+            <div class="lf-password-wrap">
+              <input type="password" id="reg-password" name="password" placeholder="••••••••" autocomplete="new-password" required />
+              <button type="button" class="lf-eye" id="reg-eye" aria-label="Toggle password visibility">&#128065;</button>
+            </div>
+          </div>
+          <div class="lf-group">
+            <label for="reg-confirm">Confirm Password</label>
+            <input type="password" id="reg-confirm" name="confirm" placeholder="••••••••" autocomplete="new-password" required />
+          </div>
+          <div class="lf-error" id="register-error" role="alert"></div>
+          <button type="submit" class="lf-submit" id="register-submit">
+            <span class="lf-submit-text">Create Account</span>
+            <span class="lf-spinner" hidden></span>
+          </button>
+        </form>
+        <p class="lf-switch">Already have an account? <button class="lf-switch-btn" id="go-login">Sign in</button></p>
+      </div>
+
+    </div><!-- /.login-card -->
+  </main>
+
+  <script src="auth-utils.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

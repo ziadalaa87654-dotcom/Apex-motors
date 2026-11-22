@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Account — APEX MOTORS</title>
+  <meta name="description" content="Manage your APEX MOTORS account, view your vehicle inquiries and update your profile."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared-nav.css"/>
+  <link rel="stylesheet" href="account.css"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">APEX<span>.</span>MOTORS</a>
+    <ul class="nav-links">
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><span id="nav-auth-slot"></span></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="account-hero">
+    <div class="account-hero-inner">
+      <div class="account-avatar" id="account-avatar">—</div>
+      <div class="account-hero-text">
+        <div class="account-greeting">Welcome back,</div>
+        <h1 class="account-name" id="account-name">Loading…</h1>
+        <div class="account-email" id="account-email"></div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="account-stats">
+      <div class="acct-stat">
+        <div class="acct-stat-val" id="stat-total">—</div>
+        <div class="acct-stat-lbl">Total Inquiries</div>
+      </div>
+      <div class="acct-stat-divider"></div>
+      <div class="acct-stat">
+        <div class="acct-stat-val acct-stat-val--gold" id="stat-pending">—</div>
+        <div class="acct-stat-lbl">Pending</div>
+      </div>
+      <div class="acct-stat-divider"></div>
+      <div class="acct-stat">
+        <div class="acct-stat-val acct-stat-val--blue" id="stat-contacted">—</div>
+        <div class="acct-stat-lbl">Contacted</div>
+      </div>
+      <div class="acct-stat-divider"></div>
+      <div class="acct-stat">
+        <div class="acct-stat-val acct-stat-val--muted" id="stat-closed">—</div>
+        <div class="acct-stat-lbl">Closed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <div class="account-tabs-wrap">
+    <div class="account-tabs">
+      <button class="acct-tab active" id="tab-inquiries" data-panel="panel-inquiries">My Inquiries</button>
+      <button class="acct-tab" id="tab-profile" data-panel="panel-profile">Profile Settings</button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <main class="account-main">
+
+    <!-- ── INQUIRIES PANEL ── -->
+    <div class="acct-panel active" id="panel-inquiries">
+      <div class="acct-card">
+        <div class="acct-card-header">
+          <div class="acct-card-title">Vehicle Inquiries</div>
+          <a href="/inventory.html" class="acct-link-btn">Browse More Vehicles →</a>
+        </div>
+        <div id="inquiries-content">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROFILE PANEL ── -->
+    <div class="acct-panel" id="panel-profile">
+      <div class="acct-card" style="max-width:520px">
+        <div class="acct-card-header">
+          <div class="acct-card-title">Update Name</div>
+        </div>
+        <div class="acct-card-body">
+          <form id="name-form">
+            <div class="pf-group">
+              <label for="pf-name">Full Name</label>
+              <input type="text" id="pf-name" placeholder="Your full name" required/>
+            </div>
+            <div class="pf-error" id="name-error"></div>
+            <button type="submit" class="pf-btn" id="name-submit">Save Name</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="acct-card" style="max-width:520px;margin-top:20px">
+        <div class="acct-card-header">
+          <div class="acct-card-title">Change Password</div>
+        </div>
+        <div class="acct-card-body">
+          <form id="pwd-form">
+            <div class="pf-group">
+              <label for="pf-current">Current Password</label>
+              <input type="password" id="pf-current" placeholder="••••••••" required/>
+            </div>
+            <div class="pf-group">
+              <label for="pf-new">New Password <span class="pf-hint">(min 8 chars)</span></label>
+              <input type="password" id="pf-new" placeholder="••••••••" required/>
+            </div>
+            <div class="pf-group">
+              <label for="pf-confirm">Confirm New Password</label>
+              <input type="password" id="pf-confirm" placeholder="••••••••" required/>
+            </div>
+            <div class="pf-error" id="pwd-error"></div>
+            <button type="submit" class="pf-btn" id="pwd-submit">Update Password</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="acct-card" style="max-width:520px;margin-top:20px">
+        <div class="acct-card-header">
+          <div class="acct-card-title" style="color:var(--error)">Account</div>
+        </div>
+        <div class="acct-card-body">
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:16px;line-height:1.6">
+            Signing out will clear your session. You can log back in at any time.
+          </p>
+          <button class="pf-btn pf-btn--danger" id="signout-btn">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="auth-utils.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>

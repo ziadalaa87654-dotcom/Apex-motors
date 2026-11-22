@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>403 Unauthorized — APEX MOTORS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@400;500;600&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark: #0a0a0b; --gold: #c9a84c; --gold-light: #e0c06a;
+      --text: #e8e4dc; --text-muted: #6a6560; --border: rgba(255,255,255,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--dark); color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 20px;
+      overflow: hidden;
+    }
+    /* Background orb */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 60% 20%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(220,80,80,0.06) 0%, transparent 50%);
+    }
+    .error-code {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--gold) 30%, rgba(201,168,76,0.2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .error-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .error-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+    .error-badge {
+      display: inline-block;
+      font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: #e07070;
+      background: rgba(220,80,80,0.1);
+      border: 1px solid rgba(220,80,80,0.3);
+      padding: 5px 14px; border-radius: 2px;
+      margin-bottom: 32px;
+    }
+    .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 12px 28px; border-radius: 3px;
+      border: 1px solid transparent;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-primary { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-ghost { background: transparent; color: var(--text-muted); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .user-info {
+      margin-top: 48px;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .user-info strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+  <div class="error-badge">Access Denied</div>
+  <div class="error-code">403</div>
+  <div class="error-title">Restricted Area</div>
+  <p class="error-desc">
+    You do not have permission to access the Admin Panel.<br/>
+    This area is reserved for APEX MOTORS administrators only.
+  </p>
+  <div class="btn-group">
+    <a href="/inventory.html" class="btn btn-primary">Browse Inventory</a>
+    <a href="/" class="btn btn-ghost">Return Home</a>
+  </div>
+  <div class="user-info" id="user-info"></div>
+
+  <script>
+    try {
+      const user = JSON.parse(localStorage.getItem("apex_user"));
+      if (user) {
+        document.getElementById("user-info").innerHTML =
+          `Logged in as <strong>${user.name}</strong> &mdash; Role: <strong>${user.role}</strong>`;
+      }
+    } catch {}
+  </script>
+</body>
+</html>
